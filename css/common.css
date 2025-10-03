@@ -4,7 +4,8 @@ html {
 }
 
 body {
-    font-family: 'Josefin Sans', sans-serif !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 300 !important;
     padding: 0 !important;
     width: 100% !important;
     overflow-x: hidden !important;

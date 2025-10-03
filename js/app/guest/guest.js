@@ -11,6 +11,7 @@ import { storage } from '../../common/storage.js';
 import { session } from '../../common/session.js';
 import { offline } from '../../common/offline.js';
 import * as confetti from '../../libs/confetti.js';
+import { fallingFlowers } from '../../libs/falling-flowers.js';
 import { pool } from '../../connection/request.js';
 
 export const guest = (() => {
@@ -171,6 +172,9 @@ export const guest = (() => {
         confetti.basicAnimation();
         util.timeOut(confetti.openAnimation, 1500);
 
+        // Stop falling flowers when opening invitation
+        fallingFlowers.stop();
+
         document.dispatchEvent(new Event('undangan.open'));
         util.changeOpacity(document.getElementById('welcome'), false).then((el) => el.remove());
     };
@@ -310,6 +314,9 @@ export const guest = (() => {
 
         // remove loading screen and show welcome screen.
         await util.changeOpacity(document.getElementById('loading'), false).then((el) => el.remove());
+
+        // Initialize falling flowers on welcome page
+        fallingFlowers.init();
     };
 
     /**
@@ -405,6 +412,7 @@ export const guest = (() => {
                 showStory,
                 closeInformation,
             },
+            fallingFlowers,
         };
     };
 

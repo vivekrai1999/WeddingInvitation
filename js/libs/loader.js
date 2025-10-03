@@ -66,6 +66,25 @@ const loadConfetti = (c) => {
  * @param {ReturnType<typeof cache>} c
  * @returns {Promise<void>}
  */
+const loadGSAP = (c) => {
+    const url = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.4/TweenMax.min.js';
+
+    return c.get(url).then((uri) => new Promise((res, rej) => {
+        const sc = document.createElement('script');
+        sc.onerror = rej;
+        sc.onload = () => {
+            typeof window.TweenMax === 'undefined' ? rej(new Error('GSAP library failed to load')) : res();
+        };
+
+        sc.src = uri;
+        document.head.appendChild(sc);
+    }));
+};
+
+/**
+ * @param {ReturnType<typeof cache>} c
+ * @returns {Promise<void>}
+ */
 const loadAdditionalFont = (c) => {
 
     const fonts = [
@@ -94,6 +113,7 @@ const loadAdditionalFont = (c) => {
  * @param {Object} [opt]
  * @param {boolean} [opt.aos=true] - Load AOS library
  * @param {boolean} [opt.confetti=true] - Load Confetti library
+ * @param {boolean} [opt.gsap=true] - Load GSAP library
  * @param {boolean} [opt.additionalFont=true] - Load Additional Font
  * @returns {Promise<void>}
  */
@@ -107,6 +127,10 @@ export const loader = (opt = {}) => {
 
     if (opt?.confetti ?? true) {
         promises.push(loadConfetti(c));
+    }
+
+    if (opt?.gsap ?? true) {
+        promises.push(loadGSAP(c));
     }
 
     if (opt?.additionalFont ?? true) {

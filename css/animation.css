@@ -58,3 +58,62 @@
 .slide-desktop-active {
     transform: scale(1.15);
 }
+
+@keyframes marigold-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.marigold-rotate {
+    animation: marigold-rotate 20s linear infinite;
+}
+
+/* Falling Flower Animation - CodePen Style */
+.dot{
+  width:35px;
+  height:35px;
+  position:fixed;
+  background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose2.png);
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.4;
+}
+.dot2{
+  width:35px;
+  height:35px;
+  position:fixed;
+  background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose.png);
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.4;
+}
+.dot3{
+  width:35px;
+  height:35px;
+  position:fixed;
+  background: url(http://img.babathe.com/upload/specialDisplay/htmlImage/2019/20190104_rose3.png);
+  background-size: 100% 100%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0.4;
+}
+#container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+#DiacoDesignLink,#pens{
+  color: #fff;
+}

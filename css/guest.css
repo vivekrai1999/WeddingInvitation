@@ -4,6 +4,11 @@
 html {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
+    overflow-x: hidden !important;
+}
+
+body {
+    overflow-x: hidden !important;
 }
 
 .with-scrollbar {
@@ -49,16 +54,17 @@ html {
     background-position: center;
     z-index: 10;
     pointer-events: none;
+    animation: marigold-rotate 20s linear infinite;
 }
 
 .img-marigold-frame .img-center-crop {
-    width: 13rem;
-    height: 13rem;
+    width: 12rem;
+    height: 12rem;
     position: relative;
     z-index: 11;
     border: none;
     box-shadow: none;
-    margin: 2.5rem;
+    margin: 3rem;
 }
 
 html[data-bs-theme="dark"] .btn-transparent {
