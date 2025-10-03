@@ -4,7 +4,6 @@
 html {
     scrollbar-width: none !important;
     -ms-overflow-style: none !important;
-    overflow-x: hidden !important;
 }
 
 body {
@@ -68,8 +67,10 @@ body {
 }
 
 html[data-bs-theme="dark"] .btn-transparent {
-    background-color: rgba(var(--bs-dark-rgb), 0.5) !important;
+    background-color: rgba(255, 255, 255, 0.8) !important;
     backdrop-filter: blur(0.5rem);
+    color: var(--bs-dark) !important;
+    border: 1px solid var(--bs-dark) !important;
 }
 
 html[data-bs-theme="light"] .btn-transparent {
@@ -91,8 +92,8 @@ html[data-bs-theme="light"] .color-theme-svg {
 }
 
 html[data-bs-theme="dark"] .color-theme-svg {
-    color: rgb(0, 0, 0);
-    background-color: var(--bs-dark);
+    color: var(--bs-danger);
+    background-color: var(--bs-warning);
 }
 
 html[data-bs-theme="light"] .bg-light-dark {
@@ -100,7 +101,7 @@ html[data-bs-theme="light"] .bg-light-dark {
 }
 
 html[data-bs-theme="dark"] .bg-light-dark {
-    background-color: rgb(var(--bs-dark-rgb));
+    background-color: var(--bs-warning);
 }
 
 html[data-bs-theme="light"] .bg-white-black {
@@ -108,7 +109,7 @@ html[data-bs-theme="light"] .bg-white-black {
 }
 
 html[data-bs-theme="dark"] .bg-white-black {
-    background-color: rgb(var(--bs-black-rgb));
+    background-color: var(--bs-danger);
 }
 
 .bg-cover-home {
@@ -172,4 +173,30 @@ svg {
         filter: drop-shadow(0 6px 12px rgba(241, 198, 24, 0.5));
         transform: scale(1.02);
     }
+}
+
+/* Fix text visibility on gold backgrounds */
+html[data-bs-theme="dark"] .bg-light-dark h1,
+html[data-bs-theme="dark"] .bg-light-dark h2,
+html[data-bs-theme="dark"] .bg-light-dark h3,
+html[data-bs-theme="dark"] .bg-light-dark h4,
+html[data-bs-theme="dark"] .bg-light-dark h5,
+html[data-bs-theme="dark"] .bg-light-dark h6,
+html[data-bs-theme="dark"] .bg-light-dark p,
+html[data-bs-theme="dark"] .bg-light-dark span,
+html[data-bs-theme="dark"] .bg-light-dark div {
+    color: var(--bs-dark) !important;
+}
+
+/* Fix text visibility on coral backgrounds */
+html[data-bs-theme="dark"] .bg-white-black h1,
+html[data-bs-theme="dark"] .bg-white-black h2,
+html[data-bs-theme="dark"] .bg-white-black h3,
+html[data-bs-theme="dark"] .bg-white-black h4,
+html[data-bs-theme="dark"] .bg-white-black h5,
+html[data-bs-theme="dark"] .bg-white-black h6,
+html[data-bs-theme="dark"] .bg-white-black p,
+html[data-bs-theme="dark"] .bg-white-black span,
+html[data-bs-theme="dark"] .bg-white-black div {
+    color: var(--bs-light) !important;
 }
