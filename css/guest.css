@@ -19,9 +19,7 @@ body {
     font-family: 'Rozha One', cursive !important;
 }
 
-.font-arabic {
-    font-family: 'Noto Naskh Arabic', serif !important;
-}
+/* .font-arabic class removed - Arabic font support removed */
 
 .img-center-crop {
     width: 13rem;

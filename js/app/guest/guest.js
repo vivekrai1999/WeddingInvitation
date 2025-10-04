@@ -1,4 +1,3 @@
-import { video } from './video.js';
 import { image } from './image.js';
 import { audio } from './audio.js';
 import { progress } from './progress.js';
@@ -225,14 +224,7 @@ export const guest = (() => {
      */
     const closeInformation = () => information.set('info', true);
 
-    /**
-     * @returns {void}
-     */
-    const normalizeArabicFont = () => {
-        document.querySelectorAll('.font-arabic').forEach((el) => {
-            el.innerHTML = String(el.innerHTML).normalize('NFC');
-        });
-    };
+    // normalizeArabicFont function removed - Arabic font support removed
 
     /**
      * @returns {void}
@@ -245,29 +237,7 @@ export const guest = (() => {
         });
     };
 
-    /**
-     * @returns {void}
-     */
-    const buildGoogleCalendar = () => {
-        /**
-         * @param {string} d 
-         * @returns {string}
-         */
-        const formatDate = (d) => (new Date(d.replace(' ', 'T') + ':00Z')).toISOString().replace(/[-:]/g, '').split('.').shift();
-
-        const url = new URL('https://calendar.google.com/calendar/render');
-        const data = new URLSearchParams({
-            action: 'TEMPLATE',
-            text: 'The Wedding of Wahyu and Riski',
-            dates: `${formatDate('2023-03-15 10:00')}/${formatDate('2023-03-15 11:00')}`,
-            details: 'Tanpa mengurangi rasa hormat, kami mengundang Anda untuk berkenan menghadiri acara pernikahan kami. Terima kasih atas perhatian dan doa restu Anda, yang menjadi kebahagiaan serta kehormatan besar bagi kami.',
-            location: 'RT 10 RW 02, Desa Pajerukan, Kec. Kalibagor, Kab. Banyumas, Jawa Tengah 53191.',
-            ctz: config.get('tz'),
-        });
-
-        url.search = data.toString();
-        document.querySelector('#home button')?.addEventListener('click', () => window.open(url, '_blank'));
-    };
+    // buildGoogleCalendar function removed - Google Calendar integration removed
 
     /**
      * @returns {object}
@@ -298,8 +268,8 @@ export const guest = (() => {
         countDownDate();
         showGuestName();
         modalImageClick();
-        normalizeArabicFont();
-        buildGoogleCalendar();
+        // normalizeArabicFont(); // Arabic font support removed
+        // buildGoogleCalendar(); // Google Calendar integration removed
 
         if (information.has('presence')) {
             document.getElementById('form-presence').value = information.get('presence') ? '1' : '2';
@@ -330,7 +300,6 @@ export const guest = (() => {
         config = storage('config');
         information = storage('information');
 
-        const vid = video.init();
         const img = image.init();
         const aud = audio.init();
         const lib = loaderLibs();
@@ -350,13 +319,11 @@ export const guest = (() => {
             img.load();
             
             if (!deferMedia) {
-                vid.load();
                 aud.load();
                 lib.load({ confetti: document.body.getAttribute('data-confetti') === 'true' });
             } else {
                 // Defer media loading until user interaction
                 const loadMedia = () => {
-                    vid.load();
                     aud.load();
                     lib.load({ confetti: document.body.getAttribute('data-confetti') === 'true' });
                     document.removeEventListener('click', loadMedia);
@@ -394,13 +361,11 @@ export const guest = (() => {
                 const deferMedia = document.body.getAttribute('data-defer-media') === 'true';
                 
                 if (!deferMedia) {
-                    vid.load();
                     aud.load();
                     lib.load({ confetti: data.is_confetti_animation });
                 } else {
                     // Defer media loading until user interaction
                     const loadMedia = () => {
-                        vid.load();
                         aud.load();
                         lib.load({ confetti: data.is_confetti_animation });
                         document.removeEventListener('click', loadMedia);
@@ -437,10 +402,8 @@ export const guest = (() => {
         window.addEventListener('load', () => {
             pool.init(pageLoaded, [
                 'image',
-                'video',
                 'audio',
                 'libs',
-                'gif',
             ]);
         });
 

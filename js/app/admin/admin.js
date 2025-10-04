@@ -7,7 +7,6 @@ import { lang } from '../../common/language.js';
 import { storage } from '../../common/storage.js';
 import { session } from '../../common/session.js';
 import { offline } from '../../common/offline.js';
-import { comment } from '../components/comment.js';
 import { pool, request, HTTP_GET, HTTP_PATCH, HTTP_PUT } from '../../connection/request.js';
 
 export const admin = (() => {
@@ -35,13 +34,13 @@ export const admin = (() => {
         document.dispatchEvent(new Event('undangan.session'));
 
         request(HTTP_GET, '/api/stats').token(session.getToken()).withCache(1000 * 30).withForceCache().send().then((resp) => {
-            document.getElementById('count-comment').textContent = String(resp.data.comments).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            // document.getElementById('count-comment').textContent = String(resp.data.comments).replace(/\B(?=(\d{3})+(?!\d))/g, '.'); // Comment feature removed
             document.getElementById('count-like').textContent = String(resp.data.likes).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
             document.getElementById('count-present').textContent = String(resp.data.present).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
             document.getElementById('count-absent').textContent = String(resp.data.absent).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
         });
 
-        comment.show();
+        // comment.show(); // Comment feature removed
     });
 
     /**
@@ -314,7 +313,7 @@ export const admin = (() => {
         lang.init();
         lang.setDefault('en');
 
-        comment.init();
+        // comment.init(); // Comment feature removed
         offline.init();
         theme.spyTop();
 
@@ -341,17 +340,17 @@ export const admin = (() => {
             storage('owns').clear();
             storage('likes').clear();
             storage('config').clear();
-            storage('comment').clear();
+            // storage('comment').clear(); // Comment feature removed
             storage('session').clear();
             storage('information').clear();
         }
 
-        window.addEventListener('load', () => pool.init(pageLoaded, ['gif']));
+        window.addEventListener('load', () => pool.init(pageLoaded, [])); // Removed gif loading
 
         return {
             util,
             theme,
-            comment,
+            // comment, // Comment feature removed
             admin: {
                 auth,
                 navbar,

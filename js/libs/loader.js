@@ -88,8 +88,9 @@ const loadGSAP = (c) => {
 const loadAdditionalFont = (c) => {
 
     const fonts = [
-        { css: 'https://fonts.googleapis.com/css2?family=Sacramento&display=swap', family: 'Sacramento' },
-        { css: 'https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap', family: 'Noto Naskh Arabic' },
+        // All additional fonts removed - only using Poppins and Rozha One from HTML
+        // { css: 'https://fonts.googleapis.com/css2?family=Sacramento&display=swap', family: 'Sacramento' }, // Sacramento font removed
+        // { css: 'https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap', family: 'Noto Naskh Arabic' }, // Arabic font removed
     ];
 
     /**
