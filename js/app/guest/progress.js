@@ -44,8 +44,17 @@ export const progress = (() => {
         }
 
         loaded += 1;
-        info.innerText = `Loading ${type} ${skip ? 'skipped' : 'complete'} ${showInformation()}`;
+        
+        // Show more detailed progress for images
+        if (type === 'image') {
+            info.innerText = `Loading photos ${Math.round((loaded / total) * 100)}% ${showInformation()}`;
+        } else {
+            info.innerText = `Loading ${type} ${skip ? 'skipped' : 'complete'} ${showInformation()}`;
+        }
+        
         bar.style.width = Math.min((loaded / total) * 100, 100).toString() + '%';
+
+        // Removed early content display - let booting() handle proper transitions
 
         if (loaded === total) {
             valid = false;

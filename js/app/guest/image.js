@@ -99,8 +99,45 @@ export const image = (() => {
             await c.run(urlCache, progress.getAbort());
         };
 
-        await runGroup((el) => el.hasAttribute('fetchpriority'));
-        await runGroup((el) => !el.hasAttribute('fetchpriority'));
+        // Load placeholder.jpg first (highest priority)
+        await runGroup((el) => {
+            const src = el.getAttribute('src') || el.getAttribute('data-src') || '';
+            return src.includes('placeholder.jpg');
+        });
+        
+        // Load other high priority images
+        await runGroup((el) => el.hasAttribute('fetchpriority') && !(el.getAttribute('src') || el.getAttribute('data-src') || '').includes('placeholder.jpg'));
+        
+        // Complete progress after critical images are loaded
+        progress.complete('image');
+        
+        // Load remaining images in background (don't block progress)
+        const remainingImages = imgs.filter((el) => {
+            const src = el.getAttribute('src') || el.getAttribute('data-src') || '';
+            return !el.hasAttribute('fetchpriority') && !src.includes('placeholder.jpg');
+        });
+        
+        // Sort by file size (smallest first) for better performance
+        const sortedImages = remainingImages.sort((a, b) => {
+            const aSize = parseInt(a.dataset.size || '1000000');
+            const bSize = parseInt(b.dataset.size || '1000000');
+            return aSize - bSize;
+        });
+        
+        // Load in background with delay between batches
+        setTimeout(async () => {
+            for (let i = 0; i < sortedImages.length; i += 3) {
+                const batch = sortedImages.slice(i, i + 3);
+                urlCache.length = 0;
+                batch.forEach((el) => el.hasAttribute('data-src') ? getByFetch(el) : getByDefault(el));
+                await c.run(urlCache, progress.getAbort());
+                
+                // Add delay between batches to prevent overwhelming the browser
+                if (i + 3 < sortedImages.length) {
+                    await new Promise(resolve => setTimeout(resolve, 300));
+                }
+            }
+        }, 500); // Start background loading after 500ms
     };
 
     /**
@@ -117,7 +154,15 @@ export const image = (() => {
     const init = () => {
         c = cache('image').withForceCache();
         images = document.querySelectorAll('img');
-        images.forEach(progress.add);
+        
+        // Only track critical images for progress (placeholder.jpg + high priority + first 2 others)
+        const criticalImages = Array.from(images).filter((img, index) => {
+            const src = img.getAttribute('src') || img.getAttribute('data-src') || '';
+            return src.includes('placeholder.jpg') || 
+                   img.hasAttribute('fetchpriority') || 
+                   index < 2;
+        });
+        criticalImages.forEach(progress.add);
 
         return {
             load,

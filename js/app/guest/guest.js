@@ -309,6 +309,14 @@ export const guest = (() => {
         window.addEventListener('resize', util.debounce(slide));
         document.addEventListener('undangan.progress.done', () => booting());
         document.addEventListener('hide.bs.modal', () => document.activeElement?.blur());
+        
+        // Fallback: force booting after 8 seconds if progress is stuck
+        setTimeout(() => {
+            if (document.getElementById('loading') && document.getElementById('loading').style.opacity !== '0') {
+                console.warn('Loading timeout - forcing booting');
+                booting();
+            }
+        }, 8000);
         document.getElementById('button-modal-download').addEventListener('click', (e) => {
             img.download(e.currentTarget.getAttribute('data-src'));
         });
