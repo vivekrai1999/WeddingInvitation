@@ -345,11 +345,32 @@ export const guest = (() => {
         });
 
         if (!token || token.length <= 0) {
-
-            vid.load();
+            const deferMedia = document.body.getAttribute('data-defer-media') === 'true';
+            
             img.load();
-            aud.load();
-            lib.load({ confetti: document.body.getAttribute('data-confetti') === 'true' });
+            
+            if (!deferMedia) {
+                vid.load();
+                aud.load();
+                lib.load({ confetti: document.body.getAttribute('data-confetti') === 'true' });
+            } else {
+                // Defer media loading until user interaction
+                const loadMedia = () => {
+                    vid.load();
+                    aud.load();
+                    lib.load({ confetti: document.body.getAttribute('data-confetti') === 'true' });
+                    document.removeEventListener('click', loadMedia);
+                    document.removeEventListener('scroll', loadMedia);
+                    document.removeEventListener('touchstart', loadMedia);
+                };
+                
+                document.addEventListener('click', loadMedia, { once: true });
+                document.addEventListener('scroll', loadMedia, { once: true });
+                document.addEventListener('touchstart', loadMedia, { once: true });
+                
+                // Fallback: load after 3 seconds if no interaction
+                setTimeout(loadMedia, 3000);
+            }
         }
 
         if (token && token.length > 0) {
@@ -370,10 +391,30 @@ export const guest = (() => {
                     img.load();
                 }
 
-                vid.load();
-                aud.load();
-                lib.load({ confetti: data.is_confetti_animation });
-
+                const deferMedia = document.body.getAttribute('data-defer-media') === 'true';
+                
+                if (!deferMedia) {
+                    vid.load();
+                    aud.load();
+                    lib.load({ confetti: data.is_confetti_animation });
+                } else {
+                    // Defer media loading until user interaction
+                    const loadMedia = () => {
+                        vid.load();
+                        aud.load();
+                        lib.load({ confetti: data.is_confetti_animation });
+                        document.removeEventListener('click', loadMedia);
+                        document.removeEventListener('scroll', loadMedia);
+                        document.removeEventListener('touchstart', loadMedia);
+                    };
+                    
+                    document.addEventListener('click', loadMedia, { once: true });
+                    document.addEventListener('scroll', loadMedia, { once: true });
+                    document.addEventListener('touchstart', loadMedia, { once: true });
+                    
+                    // Fallback: load after 3 seconds if no interaction
+                    setTimeout(loadMedia, 3000);
+                }
 
             }).catch(() => progress.invalid('config'));
         }

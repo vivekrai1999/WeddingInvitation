@@ -101,9 +101,13 @@
     <!-- Dependencies JS -->
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha256-5P1JGBOIxI7FBAvT/mb1fCnI5n/NhQKzNUuW7Hq0fMc=" crossorigin="anonymous"></script>
     <script src="./dist/guest.js"></script>
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="./assets/images/photoshoot/DSC07334-Edit-min.jpg" as="image" fetchpriority="high">
+    <link rel="preload" href="./assets/images/photoshoot/1000133909-Edit-2-min.jpg" as="image" fetchpriority="high">
 </head>
 
-<body data-key="d9faced3377732b0edf19e90d1bde0cd5de04801c75eb41743" data-url="https://api.ulems.my.id/" data-audio="./assets/music/pure-love-304010.mp3" data-confetti="true" data-time="2025-11-02 09:30:00">
+<body data-key="d9faced3377732b0edf19e90d1bde0cd5de04801c75eb41743" data-url="https://api.ulems.my.id/" data-audio="./assets/music/pure-love-304010.mp3" data-confetti="true" data-time="2025-11-02 09:30:00" data-defer-media="true">
 
     <!-- Root Invitation -->
     <div class="row m-0 p-0 opacity-0" id="root">
@@ -114,22 +118,22 @@
                 <div class="d-flex position-absolute w-100 h-100">
                     <div class="position-relative overflow-hidden vw-100">
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07334-Edit-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07334-Edit-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;" fetchpriority="high">
                         </div>
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07335-Edit-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07335-Edit-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;" loading="lazy">
                         </div>
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07512-Edit-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07512-Edit-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;" loading="lazy">
                         </div>
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07547-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07547-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;" loading="lazy">
                         </div>
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07549-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07549-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;" loading="lazy">
                         </div>
                         <div class="position-absolute h-100 w-100 slide-desktop" style="opacity: 0;">
-                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07595-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;">
+                            <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07595-min.jpg" alt="bg" class="bg-cover-home" style="mask-image: none; opacity: 30%;" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -385,57 +389,57 @@
                                 <div class="carousel-inner rounded-4">
                                     <!-- Portrait Images First -->
                                     <div class="carousel-item active">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/1000133909-Edit-2-min.jpg" alt="Portrait 1" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/1000133909-Edit-2-min.jpg" alt="Portrait 1" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" fetchpriority="high">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/1000134216-Edit-min.jpg" alt="Portrait 2" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/1000134216-Edit-min.jpg" alt="Portrait 2" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/1000134217-min.jpg" alt="Portrait 3" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/1000134217-min.jpg" alt="Portrait 3" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07318-Edit-min.jpg" alt="Portrait 4" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07318-Edit-min.jpg" alt="Portrait 4" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07326-Edit-min.jpg" alt="Portrait 5" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07326-Edit-min.jpg" alt="Portrait 5" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07433-Edit-min.jpg" alt="Portrait 6" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07433-Edit-min.jpg" alt="Portrait 6" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07587-min.jpg" alt="Portrait 7" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07587-min.jpg" alt="Portrait 7" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07619-Edit-min.jpg" alt="Portrait 8" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07619-Edit-min.jpg" alt="Portrait 8" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07631-Edit-min.jpg" alt="Portrait 9" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07631-Edit-min.jpg" alt="Portrait 9" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07641-min.jpg" alt="Portrait 10" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07641-min.jpg" alt="Portrait 10" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07705-min.jpg" alt="Portrait 11" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07705-min.jpg" alt="Portrait 11" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     
                                     <!-- Landscape Images -->
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07334-Edit-min.jpg" alt="Landscape 1" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07334-Edit-min.jpg" alt="Landscape 1" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07335-Edit-min.jpg" alt="Landscape 2" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07335-Edit-min.jpg" alt="Landscape 2" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07512-Edit-min.jpg" alt="Landscape 3" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07512-Edit-min.jpg" alt="Landscape 3" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07547-min.jpg" alt="Landscape 4" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07547-min.jpg" alt="Landscape 4" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07549-min.jpg" alt="Landscape 5" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07549-min.jpg" alt="Landscape 5" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07595-min.jpg" alt="Landscape 6" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)">
+                                        <img src="./assets/images/placeholder.webp" data-src="./assets/images/photoshoot/DSC07595-min.jpg" alt="Landscape 6" class="d-block img-fluid cursor-pointer" onclick="undangan.guest.modal(this)" loading="lazy">
                                     </div>
                                 </div>
 
